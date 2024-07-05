@@ -1,42 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
-const MainView = () => {
-  const [movies, setMovies] = useState([
-    {
-      id: 1,
-      title: 'Inception',
-      image: 'https://m.media-amazon.com/images/I/51mQ60bthRL._AC_SY679_.jpg',
-      director: 'Christopher Nolan',
-    },
-    {
-      id: 2,
-      title: 'The Godfather',
-      image: 'https://m.media-amazon.com/images/I/41+eK8zBwQL._AC_.jpg',
-      director: 'Francis Ford Coppola',
-    },
-    {
-      id: 3,
-      title: 'Pulp Fiction',
-      image: 'https://m.media-amazon.com/images/I/41VCB44VJAL._AC_.jpg',
-      director: 'Quentin Tarantino',
-    },
-    {
-      id: 4,
-      title: 'The Shawshank Redemption',
-      image: 'https://m.media-amazon.com/images/I/51NiGlapXlL._AC_.jpg',
-      director: 'Frank Darabont',
-    },
-    {
-      id: 5,
-      title: 'The Dark Knight',
-      image: 'https://m.media-amazon.com/images/I/51EpZavHOhL._AC_SY679_.jpg',
-      director: 'Christopher Nolan',
-    },
-  ]);
+export const MainView = () => {
+  const [movies, setMovies] = useState([]);
 
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+  useEffect(() => {
+    fetch('https://myflixx-movie-app-2d5cece4bfb1.herokuapp.com/movies')
+      .then((response) => response.json())
+      .then((movies) => {
+        const moviesFromApi = movies.map((movie) => {
+          return {
+            id: movie._id,
+            title: movie.title,
+            description: movie.description,
+            image: movie.image,
+            genre: movie.genre,
+            directior: movie.director,
+          };
+        });
+        setMovies(moviesFromApi);
+      });
+  }, []);
 
   if (selectedMovie) {
     return (
@@ -65,5 +52,3 @@ const MainView = () => {
     </div>
   );
 };
-
-export default MainView;
