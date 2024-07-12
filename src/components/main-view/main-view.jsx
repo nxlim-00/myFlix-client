@@ -29,7 +29,7 @@ export const MainView = () => {
             directior: movie.Director.Name,
           };
         });
-        setMovies(movies);
+        setMovies(movies); // if i use moviesFromApi the movies aren't shown
       });
   }, [token]);
 
