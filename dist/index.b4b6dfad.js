@@ -27405,7 +27405,7 @@ const MainView = ()=>{
                     directior: movie.Director.Name
                 };
             });
-            setMovies(movies);
+            setMovies(movies); // if i use moviesFromApi the movies aren't shown
         });
     }, [
         token
@@ -27537,7 +27537,7 @@ MovieCard.propTypes = {
     Movie: (0, _propTypesDefault.default).shape({
         Title: (0, _propTypesDefault.default).string.isRequired,
         Description: (0, _propTypesDefault.default).string.isRequired,
-        Image: (0, _propTypesDefault.default).string.isRequired,
+        ImagePath: (0, _propTypesDefault.default).string.isRequired,
         Genre: (0, _propTypesDefault.default).shape({
             Name: (0, _propTypesDefault.default).string.isRequired,
             Description: (0, _propTypesDefault.default).string.isRequired
