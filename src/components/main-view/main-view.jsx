@@ -33,28 +33,6 @@ export const MainView = () => {
       });
   }, [token]);
 
-  /* useEffect(() => {
-    if (!token) return;
-    fetch('https://myflixx-movie-app-2d5cece4bfb1.herokuapp.com/movies', {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => response.json())
-      .then((movies) => {
-        setMovies(movies);
-      });
-  }, [token]);
-
-  const moviesFromApi = movies.map((movie) => {
-    return {
-      id: movie._id,
-      title: movie.title,
-      description: movie.description,
-      image: movie.image,
-      genre: movie.genre,
-      directior: movie.director,
-    };
-  });
- */
   if (!user) {
     return (
       <>
