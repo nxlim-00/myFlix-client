@@ -97,7 +97,7 @@ export const MainView = () => {
         ) : (
           <>
             {movies.map((movie) => (
-              <Col key={movie.id} xs={12} s={6} md={4} lg={3}>
+              <Col key={movie.id} md={6} lg={3}>
                 <MovieCard
                   className="mb-5"
                   key={movie.id}
