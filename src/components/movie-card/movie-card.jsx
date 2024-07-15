@@ -18,21 +18,6 @@ export const MovieCard = ({ movie, onMovieClick }) => {
   );
 };
 
-export const BookCard = ({ book, onBookClick }) => {
-  return (
-    <Card>
-      <Card.Img variant="top" src={book.image} />
-      <Card.Body>
-        <Card.Title>{book.title}</Card.Title>
-        <Card.Text>{book.author}</Card.Text>
-        <Button variant="primary" onClick={() => onBookClick(book)}>
-          Open
-        </Button>
-      </Card.Body>
-    </Card>
-  );
-};
-
 MovieCard.propTypes = {
   Movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
