@@ -55,7 +55,7 @@ export const MainView = () => {
         )}
 
         {!user ? (
-          <Col xs={12} s={6} md={4} lg={3}>
+          <Col>
             {/* Separate and connect LoginView and SignupView */}
             {!Signup ? (
               <>
@@ -85,13 +85,7 @@ export const MainView = () => {
             )}
           </Col>
         ) : selectedMovie ? (
-          <Col
-            xs={12}
-            s={6}
-            md={4}
-            lg={3}
-            style={{ border: '1px solid black' }}
-          >
+          <Col style={{ border: '1px solid black' }}>
             <MovieView
               style={{ border: '1px solid green' }}
               movie={selectedMovie}
