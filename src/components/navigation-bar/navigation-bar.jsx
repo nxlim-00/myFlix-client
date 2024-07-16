@@ -12,7 +12,7 @@ export const NavigationBar = ({ user }) => {
       className="py-3"
     >
       <Container>
-        <Navbar.Brand as={Link} to="/" className="me-auto">
+        <Navbar.Brand as={Link} to="/">
           myFlix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
