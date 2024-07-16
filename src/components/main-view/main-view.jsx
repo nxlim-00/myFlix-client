@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
-import { SignupView } from '../signup-view/signup-view.jsx';
+import { SignupView } from '../signup-view/signup-view';
+import { NavigationBar } from '../navigation-bar/navigation-bar';
 import { Row, Button, Col, Container, Nav } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -36,14 +37,15 @@ export const MainView = () => {
       });
   }, [token]);
 
-  const handleLogout = () => {
+  /*   const handleLogout = () => {
     setUser(null);
     setToken(null);
     localStorage.clear();
-  };
+  }; */
 
   return (
     <BrowserRouter>
+      <NavigationBar user={user} onLoggedOut={user} />
       <Row className="justify-content-md-center">
         <Routes>
           <Route
@@ -55,12 +57,6 @@ export const MainView = () => {
                 ) : (
                   <Col md={5}>
                     <SignupView />
-                    {/*  <Button
-                      variant="outline-primary"
-                      onClick={() => <Navigate to="/login" />}
-                    >
-                      Back to Login
-                    </Button> */}
                   </Col>
                 )}
               </>
@@ -80,12 +76,6 @@ export const MainView = () => {
                         setToken(token);
                       }}
                     />
-                    {/*   <Button
-                      variant="outline-primary"
-                      onClick={() => navigate('/signup')}
-                    >
-                      Login
-                    </Button> */}
                   </Col>
                 )}
               </>
@@ -115,16 +105,9 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
+                  <Col>Just one breath away...</Col>
                 ) : (
                   <>
-                    <Button
-                      className="d-flex justify-content-between align-items-center mb-4"
-                      onClick={handleLogout}
-                    >
-                      Logout
-                    </Button>
-
                     <Row>
                       {movies.map((movie) => (
                         <Col className="mb-5" key={movie._id} md={6} lg={3}>
@@ -142,82 +125,3 @@ export const MainView = () => {
     </BrowserRouter>
   );
 };
-
-{
-  /* {user && (
-          <Row>
-            <Col className="text-right">
-              <button
-                onClick={() => {
-                  setUser(null);
-                  setToken(null);
-                  localStorage.clear();
-                }}
-              >
-                Logout
-              </button>
-            </Col>
-          </Row>
-        )}
-
-        {!user ? (
-          <Col>
-        
-            {!Signup ? (
-              <>
-                <LoginView
-                  onLoggedIn={(user, token) => {
-                    setUser(user);
-                    setToken(token);
-                  }}
-                />
-                <Button
-                  variant="outline-primary"
-                  onClick={() => setSignup(true)}
-                >
-                  Sign up
-                </Button>
-              </>
-            ) : (
-              <>
-                <SignupView />
-                <Button
-                  variant="outline-primary"
-                  onClick={() => setSignup(false)}
-                >
-                  Back to Login
-                </Button>
-              </>
-            )}
-          </Col>
-        ) : selectedMovie ? (
-          <Col style={{ border: '1px solid black' }}>
-            <MovieView
-              style={{ border: '1px solid green' }}
-              movie={selectedMovie}
-              onBackClick={() => setSelectedMovie(null)}
-            />
-          </Col>
-        ) : movies.length === 0 ? (
-          <div>The list is empty!</div>
-        ) : (
-          <>
-            {movies.map((movie) => (
-              <Col key={movie.id} md={6} lg={3}>
-                <MovieCard
-                  className="mb-5"
-                  key={movie.id}
-                  movie={movie}
-                  onMovieClick={(newSelectedMovie) => {
-                    setSelectedMovie(newSelectedMovie);
-                  }}
-                />
-              </Col>
-            ))}
-          </>
-        )}
-      </Row>
-    </Container>
-  );
-}; */
-}
