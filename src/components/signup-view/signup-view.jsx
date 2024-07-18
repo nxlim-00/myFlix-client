@@ -79,7 +79,9 @@ export const SignupView = () => {
         />
       </Form.Group>
 
-      <Button type="submit">Submit</Button>
+      <Button style={{ 'margin-top': '20px' }} type="submit">
+        Submit
+      </Button>
     </Form>
   );
 };

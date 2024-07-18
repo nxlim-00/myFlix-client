@@ -4,7 +4,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { SignupView } from '../signup-view/signup-view';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
-import { Row, Button, Col, Container, Nav } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 export const MainView = () => {
@@ -55,7 +55,7 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col md={5}>
+                  <Col md={5} style={{ padding: '50px' }}>
                     <SignupView />
                   </Col>
                 )}
@@ -69,7 +69,7 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col md={5}>
+                  <Col md={5} style={{ padding: '50px' }}>
                     <LoginView
                       onLoggedIn={(user, token) => {
                         setUser(user);
@@ -105,7 +105,10 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
-                  <Col>Just one breath away...</Col>
+                  <Col style={{ textAlign: 'center' }}>
+                    Just one breath away...
+                    {/*   <Spinner animation="border" variant="danger" /> */}
+                  </Col>
                 ) : (
                   <>
                     <Row>
