@@ -1,4 +1,4 @@
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export const NavigationBar = ({ user }) => {
@@ -17,7 +17,7 @@ export const NavigationBar = ({ user }) => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse
-          className="justify-content-md-end"
+          className="justify-content-md-center"
           id="responsive-navbar-nav"
         >
           <Nav className="me-auto">
@@ -36,38 +36,6 @@ export const NavigationBar = ({ user }) => {
                 <Nav.Link as={Link} to="/">
                   Home
                 </Nav.Link>
-                <NavDropdown
-                  title="Profile"
-                  bg="primary"
-                  id="basic-nav-dropdown"
-                >
-                  <NavDropdown.Item as={Link} to="/profile" href="#action/3.1">
-                    Profile
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    as={Link}
-                    to="/favorites"
-                    href="#action/3.2"
-                  >
-                    My Favorites
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item
-                    to="#"
-                    onClick={() => {
-                      localStorage.clear();
-                      location.reload();
-                      location.href = '/';
-                    }}
-                    href="#action/3.3"
-                  >
-                    Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
-
-                {/*  <Nav.Link as={Link} to="/profile">
-                  Profile
-                </Nav.Link>
                 <Nav.Link
                   to="#"
                   onClick={() => {
@@ -77,16 +45,16 @@ export const NavigationBar = ({ user }) => {
                   }}
                 >
                   Logout
-                </Nav.Link> */}
+                </Nav.Link>
               </>
             )}
           </Nav>
-          {user && (
-            <Navbar.Text className="ms-auto justify-content-end">
-              Logged in as: <a href="profile">{user.Username}</a>
-            </Navbar.Text>
-          )}
         </Navbar.Collapse>
+        {user && (
+          <Navbar.Text className="ms-auto">
+            Logged in as: <a href="#login">{user.Username}</a>
+          </Navbar.Text>
+        )}
       </Container>
     </Navbar>
   );
