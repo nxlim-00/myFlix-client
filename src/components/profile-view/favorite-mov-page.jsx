@@ -9,7 +9,7 @@ export const FavoriteMoviesPage = () => {
     const localUser = JSON.parse(localStorage.getItem('user'));
     const token = localStorage.getItem('token');
 
-    fetch('https://myflix12-47ea37fcfdd6.herokuapp.com/movies', {
+    fetch('https://myflixx-movie-app-2d5cece4bfb1.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
