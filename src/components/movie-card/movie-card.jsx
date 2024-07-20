@@ -5,27 +5,23 @@ import { Link } from 'react-router-dom';
 
 export const MovieCard = ({ movie, updateAction }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const movieId = `${movie._id}`;
+  const movieId = movie._id; // Correctly set movieId
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (
-      user &&
-      user.FavoriteMovies &&
-      user.FavoriteMovies.includes(movie._id)
-    ) {
+    if (user && user.FavoriteMovies && user.FavoriteMovies.includes(movieId)) {
       setIsFavorite(true);
     }
-  }, [movie._id]);
+  }, [movieId]);
 
   const handleAddToFav = async (movieId) => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No token found');
-      if (!token) return;
+
       const response = await fetch(
-        `https://myflix12-47ea37fcfdd6.herokuapp.com/users/${user.Username}/movies/${movieId}`,
+        `https://myflixx-movie-app-2d5cece4bfb1.herokuapp.com/users/${user.Username}/movies/${movieId}`,
         {
           method: 'POST',
           headers: {
@@ -43,9 +39,12 @@ export const MovieCard = ({ movie, updateAction }) => {
       const updatedUser = await response.json();
       localStorage.setItem('user', JSON.stringify(updatedUser));
       setIsFavorite(true);
+      updateAction(movieId);
       alert('Movie added to your favorite list successfully!');
     } catch (error) {
-      alert('An error occurred while adding the movie to favorites.');
+      console.log(
+        `An error occurred while adding the movie to favorites: ${error.message}`
+      );
     }
   };
 
@@ -56,7 +55,7 @@ export const MovieCard = ({ movie, updateAction }) => {
       if (!token) throw new Error('No token found');
 
       const response = await fetch(
-        `https://myflix12-47ea37fcfdd6.herokuapp.com/users/${user.Username}/movies/${movieId}`,
+        `https://myflixx-movie-app-2d5cece4bfb1.herokuapp.com/users/${user.Username}/movies/${movieId}`,
         {
           method: 'DELETE',
           headers: {
@@ -74,11 +73,12 @@ export const MovieCard = ({ movie, updateAction }) => {
       const updatedUser = await response.json();
       localStorage.setItem('user', JSON.stringify(updatedUser));
       setIsFavorite(false);
-      updateAction(movieId); // Ensure the action updates the state
+      updateAction(movieId);
       alert('Movie removed from your favorite list successfully!');
     } catch (error) {
-      console.error('Error removing favorite movie:', error.message);
-      alert('An error occurred while removing the movie from favorites.');
+      console.log(
+        `An error occurred while removing the movie from favorites: ${error.message}`
+      );
     }
   };
 
