@@ -4,8 +4,11 @@ import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { SignupView } from '../signup-view/signup-view';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
+import { ProfileView } from '../profile-view/profile-view';
 import { Row, Col } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import './main-view.scss';
+import { FavoriteMoviesPage } from '../profile-view/favorite-mov-page';
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -37,16 +40,10 @@ export const MainView = () => {
       });
   }, [token]);
 
-  /*   const handleLogout = () => {
-    setUser(null);
-    setToken(null);
-    localStorage.clear();
-  }; */
-
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={user} />
-      <Row className="justify-content-md-center">
+      <Row className="justify-content-md-center main-colors">
         <Routes>
           <Route
             path="/signup"
@@ -119,6 +116,34 @@ export const MainView = () => {
                       ))}
                     </Row>
                   </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <>
+                {user ? (
+                  <Col md={8}>
+                    <ProfileView onLoggedIn={(user, token)} />
+                  </Col>
+                ) : (
+                  <Navigate to="/login" replace />
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <>
+                {user ? (
+                  <Col md={8}>
+                    <FavoriteMoviesPage onLoggedIn={(user, token)} />
+                  </Col>
+                ) : (
+                  <Navigate to="/login" replace />
                 )}
               </>
             }
