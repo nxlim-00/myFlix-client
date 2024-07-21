@@ -97,14 +97,14 @@ export const MovieCard = ({ movie, updateAction }) => {
               className="btn btn-warning"
               onClick={() => handleRemoveFromFav(movie._id)}
             >
-              Remove
+              Remove from favorites
             </Button>
           ) : (
             <Button
               className="btn btn-success"
               onClick={() => handleAddToFav(movie._id)}
             >
-              Add
+              Add to favorites
             </Button>
           )}
         </div>
