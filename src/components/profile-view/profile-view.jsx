@@ -111,14 +111,14 @@ export const ProfileView = () => {
       {user && ( // Render the user information and form only if user is set
         <Row>
           <Col lg={6} md={12}>
-            <Card>
+            <Card style={{ marginTop: '10px' }}>
               <Card.Body>
                 <UserInfo user={storedUser} />
               </Card.Body>
             </Card>
           </Col>
           <Col lg={6} md={12}>
-            <Card>
+            <Card style={{ marginTop: '10px' }}>
               <Card.Body>
                 <Form className="profile-form h-100" onSubmit={handleSubmit}>
                   <h4>Update your profile:</h4>
