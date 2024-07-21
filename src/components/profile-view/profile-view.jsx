@@ -107,7 +107,7 @@ export const ProfileView = () => {
   };
 
   return (
-    <Container>
+    <Container style={{ height: '100vh' }}>
       {user && ( // Render the user information and form only if user is set
         <Row>
           <Col lg={6} md={12}>
@@ -120,7 +120,7 @@ export const ProfileView = () => {
           <Col lg={6} md={12}>
             <Card>
               <Card.Body>
-                <form className="profile-form h-100" onSubmit={handleSubmit}>
+                <Form className="profile-form h-100" onSubmit={handleSubmit}>
                   <h4>Update your profile:</h4>
                   <Form.Group controlId="formUsername">
                     <Form.Label>Username:</Form.Label>
@@ -164,19 +164,24 @@ export const ProfileView = () => {
                   >
                     Submit change
                   </Button>
-                </form>
+                </Form>
               </Card.Body>
             </Card>
           </Col>
         </Row>
       )}
-      <Button
-        className="back-button"
-        style={{ cursor: 'pointer' }}
-        onClick={handleDeregister}
-      >
-        Deregister
-      </Button>
+      <Row className="justify-content-end mt-3">
+        <Col xs="auto">
+          <Button
+            className="back-button "
+            variant="danger"
+            style={{ cursor: 'pointer' }}
+            onClick={handleDeregister}
+          >
+            Delete account
+          </Button>
+        </Col>
+      </Row>
     </Container>
   );
 };
