@@ -46521,6 +46521,9 @@ const ProfileView = ()=>{
                         lg: 6,
                         md: 12,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
+                            style: {
+                                marginTop: "10px"
+                            },
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userInfo.UserInfo), {
                                     user: storedUser
@@ -46548,6 +46551,9 @@ const ProfileView = ()=>{
                         lg: 6,
                         md: 12,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
+                            style: {
+                                marginTop: "10px"
+                            },
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
                                     className: "profile-form h-100",
