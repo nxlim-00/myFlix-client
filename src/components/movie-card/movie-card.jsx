@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const MovieCard = ({ movie, updateAction }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const movieId = movie._id; // Correctly set movieId
+  const movieId = movie._id;
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
