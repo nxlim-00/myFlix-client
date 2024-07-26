@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
 import { FavoriteMovies } from './favorite-movies';
 
 export const FavoriteMoviesPage = () => {
@@ -29,11 +30,13 @@ export const FavoriteMoviesPage = () => {
   };
 
   return (
-    <div>
-      <FavoriteMovies
-        favoriteMovieList={favMovies}
-        updateFavMovies={updateFavMovies}
-      />
-    </div>
+    <Container style={{ height: '100vh' }}>
+      <div>
+        <FavoriteMovies
+          favoriteMovieList={favMovies}
+          updateFavMovies={updateFavMovies}
+        />
+      </div>
+    </Container>
   );
 };
