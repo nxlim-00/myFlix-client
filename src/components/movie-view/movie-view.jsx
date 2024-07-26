@@ -3,7 +3,6 @@ import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Col, Row } from 'react-bootstrap';
-import './movie-view.scss';
 
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
