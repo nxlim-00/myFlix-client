@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { Button, Form, Container } from 'react-bootstrap';
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
@@ -39,33 +38,35 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control
-          type="text"
-          value={username}
-          minLength="3"
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Enter your username."
-          required
-        />
-      </Form.Group>
+    <Container style={{ height: '100vh' }}>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="formUsername">
+          <Form.Label>Username:</Form.Label>
+          <Form.Control
+            type="text"
+            value={username}
+            minLength="3"
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username."
+            required
+          />
+        </Form.Group>
 
-      <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control
-          type="password"
-          value={password}
-          minLength="6"
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Enter your password."
-          required
-        />
-      </Form.Group>
-      <Button style={{ marginTop: '20px' }} variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+        <Form.Group controlId="formPassword">
+          <Form.Label style={{ paddingTop: '10px' }}>Password:</Form.Label>
+          <Form.Control
+            type="password"
+            value={password}
+            minLength="6"
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password."
+            required
+          />
+        </Form.Group>
+        <Button style={{ marginTop: '20px' }} variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </Container>
   );
 };

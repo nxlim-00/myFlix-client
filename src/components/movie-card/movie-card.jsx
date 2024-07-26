@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const MovieCard = ({ movie, updateAction }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const movieId = movie._id; // Correctly set movieId
+  const movieId = movie._id;
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -84,7 +84,12 @@ export const MovieCard = ({ movie, updateAction }) => {
 
   return (
     <Card className="h-100" style={{ marginTop: '10px' }}>
-      <Card.Img variant="top" src={movie.ImagePath} />
+      <Link
+        to={`/movies/${encodeURIComponent(movie._id)}`}
+        style={{ textDecoration: 'none', color: 'inherit' }}
+      >
+        <Card.Img variant="top" src={movie.ImagePath} />
+      </Link>
       <Card.Body className="d-flex flex-column">
         <Card.Title>{movie.Title}</Card.Title>
         <Card.Text>{movie.Director.Name}</Card.Text>
@@ -94,13 +99,15 @@ export const MovieCard = ({ movie, updateAction }) => {
         <div className="mt-auto">
           {isFavorite ? (
             <Button
-              className="btn btn-warning"
+              style={{ marginTop: '10px' }}
+              className="btn btn-info"
               onClick={() => handleRemoveFromFav(movie._id)}
             >
               Remove from favorites
             </Button>
           ) : (
             <Button
+              style={{ marginTop: '10px' }}
               className="btn btn-success"
               onClick={() => handleAddToFav(movie._id)}
             >

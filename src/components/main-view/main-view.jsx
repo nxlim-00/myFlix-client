@@ -16,8 +16,8 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
-  // const [selectedMovie, setSelectedMovie] = useState(null);
-  // const [Signup, setSignup] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredMovies, setFilteredMovies] = useState(movies);
 
   useEffect(() => {
     if (!token) return;
@@ -40,9 +40,21 @@ export const MainView = () => {
       });
   }, [token]);
 
+  useEffect(() => {
+    setFilteredMovies(
+      movies.filter((movie) =>
+        movie.Title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    );
+  }, [searchQuery, movies]);
+
   return (
     <BrowserRouter>
-      <NavigationBar user={user} onLoggedOut={user} />
+      <NavigationBar
+        user={user}
+        onLoggedOut={user}
+        onSearch={(query) => setSearchQuery(query)}
+      />
       <Row className="justify-content-md-center main-colors">
         <Routes>
           <Route
@@ -109,7 +121,7 @@ export const MainView = () => {
                 ) : (
                   <>
                     <Row>
-                      {movies.map((movie) => (
+                      {filteredMovies.map((movie) => (
                         <Col className="mb-5" key={movie._id} md={6} lg={3}>
                           <MovieCard
                             key={movie._id}
