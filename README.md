@@ -1,4 +1,4 @@
-### README for myFlix-client
+# myFlix-client
 
 ## Project Overview
 
@@ -46,7 +46,9 @@ src/
 │       ├── main-view.jsx
 │       └── main-view.scss
 │
-└── index.jsx
+├── index.jsx
+├── index.html
+└── index.scss
 ```
 
 
@@ -75,9 +77,8 @@ The `MovieCard` component displays individual movie information and allows users
 - **Update Profile**: Update your user profile information from the profile page.
 - **Search**: Use the search bar to filter movies by title.
 
-##
 
- Deployment
+## Deployment
 
 1. Build the application for production:
 
@@ -94,6 +95,10 @@ The `MovieCard` component displays individual movie information and allows users
 3. Make your changes and commit them (`git commit -m 'Add new feature'`).
 4. Push to the branch (`git push origin feature-branch`).
 5. Open a Pull Request.
+
+## Hosting
+
+This project is hosted on Netlify: https://myflixx-movie-app.netlify.app
 
 ## License
 
