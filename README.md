@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-myFlix is a frontend application for the movie database movie_api I built a few weeks ago. It allows users to browse movies, view detailed information about each movie, manage their profile, and maintain a list of their favorite movies. The application is built using React and React Bootstrap, with React Router for client-side routing.
+myFlix is a frontend application for the movie database myFlix I built a few weeks ago. It allows users to browse movies, view detailed information about each movie, manage their profile, and maintain a list of their favorite movies. The application is built using React and React Bootstrap, with React Router for client-side routing.
 
 ## Features
 
